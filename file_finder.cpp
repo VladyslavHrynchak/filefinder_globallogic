@@ -14,9 +14,7 @@ bool search_file(const string& path,const string& name_of_file)
 {
    for (const auto& entry : recursive_directory_iterator(path,filesystem::directory_options::skip_permission_denied))
    {
-    size_t pos = entry.path().filename().string().find(name_of_file);
-
-        if (pos != string::npos)
+        if (entry.path().filename().string() == name_of_file)
         {
             cout << entry.path().string()<< endl;
             return true;
